@@ -14,7 +14,7 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Установка переменной окружения для URL MongoDB
-ENV MONGO_URL=mongodb://mongo:27017/redilab
+ENV MONGO_URL=mongodb://0.0.0.0:27017/redilab
 
 # Команда для запуска вашего приложения
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
