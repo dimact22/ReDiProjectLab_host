@@ -1,0 +1,10 @@
+services:
+  - name: mongo
+    image: mongo:latest
+    plan: starter
+
+  - name: backend
+    dockerfile: Dockerfile
+    plan: starter
+    envVars:
+      MONGO_URL: mongodb://mongo:27017/redilab
