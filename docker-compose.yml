@@ -14,10 +14,10 @@ services:
     restart: always
     ports:
       - "8000:8000"
-    depends_on:
-      - mongo
     environment:
       MONGO_URL: ${MONGO_URL}
+    depends_on:
+      - mongo
 
 volumes:
   mongo_data:
