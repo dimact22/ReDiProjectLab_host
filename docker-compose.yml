@@ -18,7 +18,7 @@ services:
     depends_on:
       - mongo
     environment:
-      MONGO_URL: mongodb://mongo:27017/redilab  # Использование алиаса
+      MONGO_URL: mongodb://0.0.0.0:27017/redilab  # Использование алиаса
     networks:
       - my-network  # Подключение к той же сети, что и MongoDB
 
