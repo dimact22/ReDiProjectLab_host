@@ -1,24 +1,22 @@
 version: '3'
 services:
+  mongo:
+    image: mongo:latest  # Используем официальный Docker образ MongoDB
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
   backend:
     build: .
     restart: always
     ports:
       - "8000:8000"
-    environment:
-      MONGO_URL: mongodb://mongo:27017/redilab
     depends_on:
       - mongo
-    volumes:
-      - mongo_data:/data/db
-
-  mongo:
-    image: mongo:latest
-    restart: always
     environment:
-      MONGO_INITDB_DATABASE: redilab
-    volumes:
-      - mongo_data:/data/db
+      MONGO_URL: ${MONGO_URL}
 
 volumes:
   mongo_data:
