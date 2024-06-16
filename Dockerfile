@@ -1,11 +1,6 @@
 # Использование официального образа Python 3.9 в качестве базового образа
 FROM python:3.9
 
-# Установка MongoDB и других зависимостей
-RUN apt-get update && apt-get install -y \
-    mongodb \
- && rm -rf /var/lib/apt/lists/*
-
 # Установка директории приложения в контейнере
 WORKDIR /app
 
