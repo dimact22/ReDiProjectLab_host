@@ -3,6 +3,7 @@ from pymongo import MongoClient
 import os
 
 app = FastAPI()
+
 PASS = "admin"
 
 mongo_uri = os.getenv(
