@@ -10,7 +10,9 @@ services:
       - mongo_data:/data/db
 
   backend:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile  # Указываем имя Dockerfile для сборки backend сервиса
     restart: always
     ports:
       - "8000:8000"
