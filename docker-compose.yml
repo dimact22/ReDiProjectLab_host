@@ -1,5 +1,4 @@
 version: '3'
-
 services:
   mongo:
     image: mongo:latest
@@ -8,18 +7,24 @@ services:
       - "27017:27017"
     volumes:
       - mongo_data:/data/db
+    networks:
+      - my-network  # Убедитесь, что оба сервиса находятся в одной сети
 
   backend:
-    build:
-      context: .
-      dockerfile: Dockerfile  # Указываем имя Dockerfile для сборки backend сервиса
+    build: .
     restart: always
     ports:
       - "8000:8000"
     depends_on:
       - mongo
     environment:
-      MONGO_URL: ${MONGO_URL}
+      MONGO_URL: mongodb://mongo:27017/redilab
+    networks:
+      - my-network  # Убедитесь, что оба сервиса находятся в одной сети
+
+networks:
+  my-network:  # Определение сети
+    driver: bridge
 
 volumes:
   mongo_data:
