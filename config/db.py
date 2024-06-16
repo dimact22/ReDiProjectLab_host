@@ -3,8 +3,10 @@ from pymongo import MongoClient
 import os
 
 app = FastAPI()
+PASS = "admin"
 
-mongo_uri = os.getenv("MONGO_URL", "mongodb://localhost:27017/redilab")
+mongo_uri = os.getenv(
+    "MONGO_URL", f"mongodb+srv://admin:{PASS}@cluster0.eekni1o.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 print("MongoDB Verbindungs-URL:", mongo_uri)
 client = MongoClient(mongo_uri)
 
